@@ -6,7 +6,9 @@ public class MainMenu : MonoBehaviour
 {
    public void onPlayButtonClick()
    {
+       Debug.LogWarning("entering next scene");
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+       
    }
 
    public void onQuitClick()
