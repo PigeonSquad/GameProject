@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour
 { 
     void Update()
         {
-
             if(InteractWithCombat()) return;
             if(InteractWithMovement()) return;
+
         }
 
         private bool InteractWithMovement()
