@@ -6,19 +6,22 @@ namespace ARPG.Combat
 
 public class Fighter : MonoBehaviour, IAction {
 
-    [SerializeField] float weaponRange = 2f;
-    [SerializeField] float timeBetweenAttacks = 1f;
-    [SerializeField] float weaponDamage = 5f;
-    Transform target;
-    float timeSinceLastAttack = 0;
+        [SerializeField] float weaponRange = 2f;
+        [SerializeField] float timeBetweenAttacks = 1f;
+        [SerializeField] float weaponDamage = 5f;
+        HealthEnemy target;
+        float timeSinceLastAttack = 0;
 
-    private void Update()
+        private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
-            if(target == null) return;
+            if (target == null) return;
+
+            if(target.IsDead()) return;
+
             if (!GetIsInRange())
             {
-                GetComponent<Mover>().MoveTo(target.position);
+                GetComponent<Mover>().MoveTo(target.transform.position);
             }
             else
             {
@@ -30,39 +33,40 @@ public class Fighter : MonoBehaviour, IAction {
 
         private void AttackBehaviour()
         {
-            if(timeSinceLastAttack> timeBetweenAttacks)
+            if (timeSinceLastAttack > timeBetweenAttacks)
             {
-            GetComponent<Animator>().SetTrigger("attack");
-            timeSinceLastAttack = 0;
-                HealthEnemy healthComponent = target.GetComponent<HealthEnemy>();
-                healthComponent.TakeDamage(weaponDamage);
+                GetComponent<Animator>().SetTrigger("attack");
+                timeSinceLastAttack = 0;
+                
+                target.TakeDamage(weaponDamage);
             }
-            
+
         }
         //Animation Event
         void Hit()
         {
-            
+
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
         public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.transform;
+            target = combatTarget.GetComponent<HealthEnemy>();
             print("hit");
         }
-    public void Cancel()
-    {
-        target= null;
+        public void Cancel()
+        {
+            GetComponent<Animator>().SetTrigger("stopAttack");
+            target = null;
+        }
+
+
+
     }
-  
-   
-    
-}
 
 }
