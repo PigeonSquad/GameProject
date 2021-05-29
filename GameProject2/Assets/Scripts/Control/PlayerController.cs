@@ -12,7 +12,24 @@ public class PlayerController : MonoBehaviour
         {
             InteractWithCombat();
             InteractWithMovement();
+            //InteractWithItems();
         }
+
+        // private void InteractWithItems(){
+        //     if(Input.GetMouseButtonDown(1)){
+        //         //Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        //         RaycastHit hit;
+
+        //         if (Physics.Raycast(ray, out hit, 100))
+        //         {
+        //            Interactable interactable = hit.collider.GetComponent<Interactable>();
+        //            if (interactable != null)
+        //            {
+        //                //da
+        //            }
+        //         }
+        //     }
+        // }
 
         private void InteractWithMovement()
         {
