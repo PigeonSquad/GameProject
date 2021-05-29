@@ -33,15 +33,26 @@ public class Fighter : MonoBehaviour, IAction {
 
         private void AttackBehaviour()
         {
+            transform.LookAt(target.transform);
             if (timeSinceLastAttack > timeBetweenAttacks)
             {
-                GetComponent<Animator>().SetTrigger("attack");
+                TriggerAttack();
                 timeSinceLastAttack = 0;
-                
+                if(target == null)
+                {
+                    return;
+                }
                 target.TakeDamage(weaponDamage);
             }
 
         }
+
+        private void TriggerAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("stopAttack");
+            GetComponent<Animator>().SetTrigger("attack");
+        }
+
         //Animation Event
         void Hit()
         {
@@ -53,6 +64,16 @@ public class Fighter : MonoBehaviour, IAction {
             return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
+        public bool canAttack(CombatTarget combatTarget)
+        {
+            if(combatTarget == null)
+            {
+                return false;
+            }
+            HealthEnemy targetToTest=  combatTarget.GetComponent<HealthEnemy>();
+            return targetToTest != null && !targetToTest.IsDead();
+        }
+
         public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
@@ -61,12 +82,15 @@ public class Fighter : MonoBehaviour, IAction {
         }
         public void Cancel()
         {
-            GetComponent<Animator>().SetTrigger("stopAttack");
+            StopAttack();
             target = null;
         }
 
-
-
+        private void StopAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("stopAttack");
+        }
     }
 
 }
