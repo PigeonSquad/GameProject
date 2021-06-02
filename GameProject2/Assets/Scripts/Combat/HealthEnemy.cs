@@ -4,13 +4,31 @@ namespace ARPG.Combat
 {
     public class HealthEnemy: MonoBehaviour 
     {
-        [SerializeField] float health = 100f;
+        [SerializeField] float healthPoints = 100f;
+        bool isDead = false;
+
+        public bool IsDead()
+        {
+            return isDead;
+        }
 
         public void TakeDamage(float damage)
         {
-            health = Mathf.Max(health - damage,0);
-            Debug.Log("Enemy Health:" + health);
-            print("Enemy Health:" + health);
+            healthPoints = Mathf.Max(healthPoints - damage, 0);
+            Debug.Log("Enemy Health:" + healthPoints);
+            print("Enemy Health:" + healthPoints);
+            if (healthPoints == 0)
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            if (isDead) return;
+
+            isDead = true;
+            GetComponent<Animator>().SetTrigger("die");
         }
     }
 
