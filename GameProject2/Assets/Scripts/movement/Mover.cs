@@ -8,11 +8,14 @@ namespace ARPG.Movement
 public class Mover : MonoBehaviour, IAction
 {
     NavMeshAgent navMeshAgent;
+    HealthEnemy health;
     private void Start() {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        health = GetComponent<HealthEnemy>();
     }
       void Update()
     {
+        navMeshAgent.enabled = !health.IsDead();
         UpdateAnimator();
       
     }

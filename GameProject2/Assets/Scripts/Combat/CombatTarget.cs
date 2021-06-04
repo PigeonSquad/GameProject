@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using ARPG.Core;
 
 
 namespace ARPG.Combat

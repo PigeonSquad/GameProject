@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ARPG.Combat
+namespace ARPG.Core
 {
     public class HealthEnemy: MonoBehaviour 
     {
@@ -29,6 +29,7 @@ namespace ARPG.Combat
 
             isDead = true;
             GetComponent<Animator>().SetTrigger("die");
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
     }
 

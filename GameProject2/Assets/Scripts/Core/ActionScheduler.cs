@@ -18,5 +18,9 @@ public void StartAction(IAction action)
    
     currentAction = action;
 }
+
+public void CancelCurrentAction() {
+    StartAction(null);
+}
 }
 }
