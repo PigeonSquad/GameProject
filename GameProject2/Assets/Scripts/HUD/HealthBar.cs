@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour
         health = health - 5;
         healthBar.value = health;
         
-        Debug.Log("Health:"+health);
+        //Debug.Log("Health:"+health);
         if(health <= 0)
         {
             Debug.Log("Dead");

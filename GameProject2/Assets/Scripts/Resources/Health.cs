@@ -1,11 +1,15 @@
 using UnityEngine;
-
-namespace ARPG.Combat
+using ARPG.Stats;
+namespace ARPG.Resources
 {
-    public class HealthEnemy: MonoBehaviour 
+    public class Health: MonoBehaviour 
     {
         [SerializeField] float healthPoints = 100f;
         bool isDead = false;
+
+        private void Start() {
+            healthPoints = GetComponent<BaseStats>().GetHealth();
+        }
 
         public bool IsDead()
         {

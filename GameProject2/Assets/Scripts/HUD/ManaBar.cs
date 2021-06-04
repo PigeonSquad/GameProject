@@ -19,7 +19,7 @@ public class ManaBar : MonoBehaviour
         mana = mana - 5;
         manaBar.value = mana;
 
-        Debug.Log("Mana:" + mana);
+        //Debug.Log("Mana:" + mana);
         if (mana <= 0)
         {
             Debug.Log("Not enough mana");

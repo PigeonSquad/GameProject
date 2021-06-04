@@ -1,11 +1,11 @@
 using UnityEngine;
-
+using ARPG.Resources;
 
 
 namespace ARPG.Combat
 {
 
-    [RequireComponent(typeof(HealthEnemy))]
+    [RequireComponent(typeof(Health))]
     public class CombatTarget : MonoBehaviour {
     
         

@@ -1,6 +1,7 @@
 using UnityEngine;
 using ARPG.Movement;
 using ARPG.Core;
+using ARPG.Resources;
 namespace ARPG.Combat
 {
 
@@ -9,7 +10,7 @@ public class Fighter : MonoBehaviour, IAction {
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] float weaponDamage = 5f;
-        HealthEnemy target;
+        Health target;
         float timeSinceLastAttack = 0;
 
         private void Update()
@@ -70,14 +71,14 @@ public class Fighter : MonoBehaviour, IAction {
             {
                 return false;
             }
-            HealthEnemy targetToTest=  combatTarget.GetComponent<HealthEnemy>();
+            Health targetToTest=  combatTarget.GetComponent<Health>();
             return targetToTest != null && !targetToTest.IsDead();
         }
 
         public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
-            target = combatTarget.GetComponent<HealthEnemy>();
+            target = combatTarget.GetComponent<Health>();
             print("hit");
         }
         public void Cancel()
