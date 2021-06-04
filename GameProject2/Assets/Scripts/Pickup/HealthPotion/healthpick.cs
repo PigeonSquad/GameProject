@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class healthpick : MonoBehaviour
 {
-
+/*
     void OnTriggerEnter(Collider other) {
         HealthBar.health += 20;
         Debug.Log("Health++");
@@ -25,4 +25,5 @@ public class healthpick : MonoBehaviour
     {
         
     }
+    */
 }
