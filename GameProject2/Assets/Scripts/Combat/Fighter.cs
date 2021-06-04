@@ -43,7 +43,7 @@ public class Fighter : MonoBehaviour, IAction {
                 {
                     return;
                 }
-                target.TakeDamage(weaponDamage);
+                target.TakeDamage(gameObject, weaponDamage);
             }
 
         }

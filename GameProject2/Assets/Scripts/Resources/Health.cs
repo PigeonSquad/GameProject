@@ -1,6 +1,7 @@
 using UnityEngine;
 using ARPG.Stats;
 using System.Collections;
+using System;
 
 namespace ARPG.Resources
 {
@@ -11,7 +12,7 @@ namespace ARPG.Resources
 
         private void Start() {
             
-            healthPoints = GetComponent<BaseStats>().GetHealth();
+            healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
             StartCoroutine("TestTakeDamage");
         }
 
@@ -22,11 +23,13 @@ namespace ARPG.Resources
 
         private IEnumerator TestTakeDamage()
         {
-            
+            if(gameObject.tag == "Player")
+            {
             while(healthPoints > 0)
             {
                 healthPoints = healthPoints - 5;
                 yield return new WaitForSeconds(5f);
+            }
             }
             
         }
@@ -36,7 +39,7 @@ namespace ARPG.Resources
             return isDead;
         }
 
-        public void TakeDamage(float damage)
+        public void TakeDamage(GameObject instigator,float damage)
         {
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             Debug.Log("Enemy Health:" + healthPoints);
@@ -44,13 +47,16 @@ namespace ARPG.Resources
             if (healthPoints == 0)
             {
                 Die();
+                AwardExperience(instigator);
             }
         }
+
+        
 
         public float GetPercentage()
         {
             
-            return 100* (healthPoints / GetComponent<BaseStats>().GetHealth());
+            return 100* (healthPoints / GetComponent<BaseStats>().GetStat(Stat.Health));
         }
 
         private void Die()
@@ -59,6 +65,12 @@ namespace ARPG.Resources
 
             isDead = true;
             GetComponent<Animator>().SetTrigger("die");
+        }
+
+        private void AwardExperience(GameObject instigator)
+        {
+            Experience experience = instigator.GetComponent<Experience>();
+            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
     }
 

@@ -468,7 +468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbb7c00fbbcde6c4a87c65d44c583ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   xpbar: {fileID: 553943161}
 --- !u!1 &282483236 stripped
 GameObject:
@@ -734,7 +733,7 @@ PrefabInstance:
     - target: {fileID: 2633096272173332788, guid: e8ca8b7299a168a4abd7900ba5a119b0,
         type: 3}
       propertyPath: healthPoints
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3378981666087505343, guid: e8ca8b7299a168a4abd7900ba5a119b0,
         type: 3}
@@ -1786,6 +1785,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 732687813}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1143223708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7897491027563554261, guid: fb29b8e5112797f4dbfde2130062fa9d,
+    type: 3}
+  m_PrefabInstance: {fileID: 844299455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1143223718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143223708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71860c521beada1419ee31db6c6f7520, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 0
 --- !u!1 &1226508038
 GameObject:
   m_ObjectHideFlags: 0
@@ -2689,6 +2707,28 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 844299455}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2061021814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9160043552897437537, guid: 2865718053f93574a929c6a5fc3bd64e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4682179632913388202}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &2061021817
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061021814}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.014, y: 0.026, z: 0.014}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.023000002, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &2068345878
 PrefabInstance:
   m_ObjectHideFlags: 0
