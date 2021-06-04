@@ -11,7 +11,8 @@ public class Fighter : MonoBehaviour, IAction {
         [SerializeField] float timeBetweenAttacks = 1f;
         [SerializeField] float weaponDamage = 5f;
         Health target;
-        float timeSinceLastAttack = 0;
+
+        float timeSinceLastAttack = Mathf.Infinity;
 
         private void Update()
         {
@@ -65,7 +66,7 @@ public class Fighter : MonoBehaviour, IAction {
             return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
-        public bool canAttack(CombatTarget combatTarget)
+        public bool canAttack(GameObject combatTarget)
         {
             if(combatTarget == null)
             {
@@ -75,7 +76,7 @@ public class Fighter : MonoBehaviour, IAction {
             return targetToTest != null && !targetToTest.IsDead();
         }
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();

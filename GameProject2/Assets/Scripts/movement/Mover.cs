@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using ARPG.Core;
 using UnityEngine;
 using UnityEngine.AI;
+using ARPG.Resources;
 namespace ARPG.Movement
 {
 public class Mover : MonoBehaviour, IAction
 {
     NavMeshAgent navMeshAgent;
+    Health health;
     private void Start() {
         navMeshAgent = GetComponent<NavMeshAgent>();
+            health = GetComponent<Health>();
     }
       void Update()
     {
+            navMeshAgent.enabled = !health.IsDead();
         UpdateAnimator();
       
     }

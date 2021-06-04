@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ARPG.Combat;
+using ARPG.Core;
+using ARPG.Resources;
 using ARPG.Movement;
 namespace ARPG.Control{
 
 
 public class PlayerController : MonoBehaviour
-{ 
-    
+{
+        Health health;
+        private void Start()
+        {
+            health = GetComponent<Health>();
+        }
     void Update()
         {
+            if (health.IsDead()) return;
             if(InteractWithCombat()) return;
             if(InteractWithMovement()) return;
 
@@ -43,20 +50,25 @@ public class PlayerController : MonoBehaviour
        foreach (RaycastHit hit in hits)
        {
           CombatTarget target=  hit.transform.GetComponent<CombatTarget>();
-            if(!GetComponent<Fighter>().canAttack(target))
+                if (target == null)
+                {
+                    continue;
+                }
+            if(!GetComponent<Fighter>().canAttack(target.gameObject))
             {
                 continue;
             }
 
           if(Input.GetMouseButtonDown(0))
           {
-              GetComponent<Fighter>().Attack(target);
+              GetComponent<Fighter>().Attack(target.gameObject);
               
           }
           return true;
        }
        return false;
     }
+    
 
 }
 
