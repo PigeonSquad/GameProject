@@ -1,5 +1,7 @@
 using UnityEngine;
 using ARPG.Stats;
+using System.Collections;
+
 namespace ARPG.Resources
 {
     public class Health: MonoBehaviour 
@@ -8,7 +10,25 @@ namespace ARPG.Resources
         bool isDead = false;
 
         private void Start() {
+            
             healthPoints = GetComponent<BaseStats>().GetHealth();
+            StartCoroutine("TestTakeDamage");
+        }
+
+        /*private void Update() {
+            StartCoroutine("TestTakeDamage");
+              
+        }*/
+
+        private IEnumerator TestTakeDamage()
+        {
+            
+            while(healthPoints > 0)
+            {
+                healthPoints = healthPoints - 5;
+                yield return new WaitForSeconds(5f);
+            }
+            
         }
 
         public bool IsDead()
@@ -25,6 +45,12 @@ namespace ARPG.Resources
             {
                 Die();
             }
+        }
+
+        public float GetPercentage()
+        {
+            
+            return 100* (healthPoints / GetComponent<BaseStats>().GetHealth());
         }
 
         private void Die()
