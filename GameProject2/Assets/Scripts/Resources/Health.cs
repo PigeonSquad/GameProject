@@ -2,6 +2,7 @@ using UnityEngine;
 using ARPG.Stats;
 using System.Collections;
 using System;
+using ARPG.Core;
 
 namespace ARPG.Resources
 {
@@ -9,6 +10,7 @@ namespace ARPG.Resources
     {
         [SerializeField] float healthPoints = 100f;
         bool isDead = false;
+        
 
         private void Start() {
             
@@ -64,7 +66,9 @@ namespace ARPG.Resources
             if (isDead) return;
 
             isDead = true;
+            
             GetComponent<Animator>().SetTrigger("die");
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
         private void AwardExperience(GameObject instigator)
