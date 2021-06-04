@@ -49,7 +49,11 @@ namespace ARPG.Resources
             if (healthPoints == 0)
             {
                 Die();
-                AwardExperience(instigator);
+                if(gameObject.tag == "Player" && !isDead)
+                {
+                    AwardExperience(instigator);
+                }
+                
             }
         }
 
