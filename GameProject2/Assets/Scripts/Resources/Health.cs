@@ -10,12 +10,14 @@ namespace ARPG.Resources
     {
         [SerializeField] float healthPoints = 100f;
         bool isDead = false;
+        //public Spawn Spawn;
         
 
         private void Start() {
             
             healthPoints = GetComponent<BaseStats>().GetStat(Stat.Health);
-            StartCoroutine("TestTakeDamage");
+            //Spawn = GetComponent<Spawn>();
+            //StartCoroutine("TestTakeDamage");
         }
 
         /*private void Update() {
@@ -38,20 +40,28 @@ namespace ARPG.Resources
 
         public bool IsDead()
         {
+            
             return isDead;
         }
 
         public void TakeDamage(GameObject instigator,float damage)
         {
+           
+
             healthPoints = Mathf.Max(healthPoints - damage, 0);
             Debug.Log("Enemy Health:" + healthPoints);
             print("Enemy Health:" + healthPoints);
             if (healthPoints == 0)
             {
+                
                 Die();
-                if(gameObject.tag == "Player" && !isDead)
+                
+                
+                if (gameObject.tag != "Player")
                 {
+                    
                     AwardExperience(instigator);
+                    //this.Spawn.Respawn();
                 }
                 
             }
@@ -71,8 +81,11 @@ namespace ARPG.Resources
 
             isDead = true;
             
+            
             GetComponent<Animator>().SetTrigger("die");
+            
             GetComponent<ActionScheduler>().CancelCurrentAction();
+            
         }
 
         private void AwardExperience(GameObject instigator)

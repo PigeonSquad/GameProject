@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using ARPG.Combat;
 using ARPG.Core;
-using ARPG.Stats;
 using ARPG.Movement;
 using ARPG.Resources;
 using UnityEngine;
