@@ -1886,6 +1886,34 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 844299455}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1143223709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143223708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46930afe07308b845b49ef4df1a434ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questRange: 2
+  questLocation: {fileID: 787031001}
+  questMessage: {fileID: 2800000, guid: 6a7ef1f9063021747bec8ed76cc19998, type: 3}
+--- !u!114 &1143223710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143223708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5469b907723fc6743890d565945facf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  State: 0
 --- !u!114 &1143223718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3158,18 +3186,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5306625909391640383, guid: 2865718053f93574a929c6a5fc3bd64e,
         type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.2415
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306625909391640383, guid: 2865718053f93574a929c6a5fc3bd64e,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.18
+      value: 25.5
       objectReference: {fileID: 0}
     - target: {fileID: 5306625909391640383, guid: 2865718053f93574a929c6a5fc3bd64e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.602425
+      value: 17.52
       objectReference: {fileID: 0}
     - target: {fileID: 5306625909391640383, guid: 2865718053f93574a929c6a5fc3bd64e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 28.46
+      value: 32.94
       objectReference: {fileID: 0}
     - target: {fileID: 5306625909391640383, guid: 2865718053f93574a929c6a5fc3bd64e,
         type: 3}

@@ -44,16 +44,16 @@ namespace ARPG.Resources
         public void TakeDamage(GameObject instigator,float damage)
         {
             healthPoints = Mathf.Max(healthPoints - damage, 0);
-            Debug.Log("Enemy Health:" + healthPoints);
-            print("Enemy Health:" + healthPoints);
+           // Debug.Log("Enemy Health:" + healthPoints);
+            //print("Enemy Health:" + healthPoints);
             if (healthPoints == 0)
             {
                 Die();
-                if(gameObject.tag == "Player" && !isDead)
+                if(gameObject.tag != "Player")
                 {
+                   
                     AwardExperience(instigator);
                 }
-                
             }
         }
 

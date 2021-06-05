@@ -14,7 +14,7 @@ public class BaseStats : MonoBehaviour
     private void Update() {
         if(gameObject.tag == "Player")
         {
-                print(GetLevel());
+                //print(GetLevel());
         }
         
     }
