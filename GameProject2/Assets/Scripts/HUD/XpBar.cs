@@ -18,7 +18,7 @@ public class XpBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("IncreaseXp", 1, 1);
+       // InvokeRepeating("IncreaseXp", 1, 1);
     }
 
     private void Awake()

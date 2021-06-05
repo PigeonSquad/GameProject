@@ -22,7 +22,7 @@ public class ManaBar : MonoBehaviour
         //Debug.Log("Mana:" + mana);
         if (mana <= 0)
         {
-            Debug.Log("Not enough mana");
+           // Debug.Log("Not enough mana");
 
         }
     }

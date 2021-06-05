@@ -6,14 +6,14 @@ public class MainMenu : MonoBehaviour
 {
    public void onPlayButtonClick()
    {
-       Debug.LogWarning("entering next scene");
+      //Debug.LogWarning("entering next scene");
        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
        
    }
 
    public void onQuitClick()
    {
-       Debug.LogWarning("Game Closed");
+       //Debug.LogWarning("Game Closed");
        Application.Quit();
    }
    

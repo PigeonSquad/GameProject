@@ -80,7 +80,7 @@ public class Fighter : MonoBehaviour, IAction {
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
-            print("hit");
+            //print("hit");
         }
         public void Cancel()
         {
