@@ -15,11 +15,11 @@ public class Mover : MonoBehaviour, IAction
             health = GetComponent<Health>();
     }
       void Update()
-    {
-            navMeshAgent.enabled = !health.IsDead();
+        {
+        navMeshAgent.enabled = !health.IsDead();
         UpdateAnimator();
       
-    }
+        }
     public void StartMoveAction(Vector3 destination)
     {
         GetComponent<ActionScheduler>().StartAction(this);

@@ -15,12 +15,12 @@ public class PlayerController : MonoBehaviour
         {
             health = GetComponent<Health>();
         }
-    void Update()
+        void Update()
         {
             if (health.IsDead()) return;
             if(InteractWithCombat()) return;
             if(InteractWithMovement()) return;
-
+            if (InteractWithItem()) return;
         }
 
         private bool InteractWithMovement()
@@ -45,29 +45,45 @@ public class PlayerController : MonoBehaviour
         }
 
         private bool InteractWithCombat()
-    {
-       RaycastHit[] hits= Physics.RaycastAll(GetMouseRay());
-       foreach (RaycastHit hit in hits)
-       {
-          CombatTarget target=  hit.transform.GetComponent<CombatTarget>();
-                if (target == null)
+        {
+           RaycastHit[] hits= Physics.RaycastAll(GetMouseRay());
+           foreach (RaycastHit hit in hits)
+           {
+              CombatTarget target=  hit.transform.GetComponent<CombatTarget>();
+                    if (target == null)
+                    {
+                        continue;
+                    }
+                if(!GetComponent<Fighter>().canAttack(target.gameObject))
                 {
                     continue;
                 }
-            if(!GetComponent<Fighter>().canAttack(target.gameObject))
+
+              if(Input.GetMouseButtonDown(0))
+              {
+                  GetComponent<Fighter>().Attack(target.gameObject);
+              
+              }
+              return true;
+           }
+           return false;
+        }
+
+        private bool InteractWithItem()
+        {
+            RaycastHit hit;
+            bool hashit = Physics.Raycast(GetMouseRay(), out hit);
+
+            if (hashit)
             {
-                continue;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    InteractableItems interactable = hit.collider.GetComponent<InteractableItems>();
+                }
             }
 
-          if(Input.GetMouseButtonDown(0))
-          {
-              GetComponent<Fighter>().Attack(target.gameObject);
-              
-          }
-          return true;
-       }
-       return false;
-    }
+            return false;
+        }
     
 
 }
